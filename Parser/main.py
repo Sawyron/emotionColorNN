@@ -41,7 +41,11 @@ def printComments(directory):
 if __name__ == '__main__':
     test_dir = 'test'
     train_dir = 'train'
-    printComments(test_dir + '\\pos')
+    data_table_neut = {'comment': [], 'type': []}
+    fillCommentDict(data_table_neut, train_dir + '\\unsup', 2.0)
+    df_neut = pd.DataFrame(data_table_neut)
+    print(df_neut.head(5))
+    df_neut.to_csv('dataset_train_neut.csv')
 
     '''data_table = readComments(train_dir)
     df = pd.DataFrame(data_table)
