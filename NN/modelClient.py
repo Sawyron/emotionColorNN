@@ -11,7 +11,7 @@ class SentenceAnalizer:
         self.model: Pipeline = joblib.load(model_file)
 
     def predict(self, sentence: str):
-        return self.model.predict([sentence])
+        return self.model.predict([sentence])[0]
 
     def predict_proba(self, sentence: str):
         return self.model.predict_proba([sentence])
@@ -19,6 +19,5 @@ class SentenceAnalizer:
 
 if __name__ == '__main__':
     s = SentenceAnalizer('modelpipeline.joblib')
-    print(s.predict('Nice move'))
+    print(s.predict('You are a terrible fool'))
     print(s.predict_proba('Nice move'))
-    print(tokenize_sentence_ru("хохла спросить забыли"))
